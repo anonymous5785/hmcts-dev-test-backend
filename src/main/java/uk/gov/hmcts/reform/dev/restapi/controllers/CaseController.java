@@ -1,9 +1,9 @@
-package uk.gov.hmcts.reform.dev.controllers;
+package uk.gov.hmcts.reform.dev.restapi.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import uk.gov.hmcts.reform.dev.models.ExampleCase;
+import uk.gov.hmcts.reform.dev.restapi.models.ExampleCase;
 
 import java.time.LocalDateTime;
 

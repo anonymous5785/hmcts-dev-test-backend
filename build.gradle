@@ -154,7 +154,12 @@ dependencies {
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
+  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
   implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.8.13'
+
+  implementation group: 'org.postgresql', name:'postgresql', version:'42.2.14'
+  implementation group: 'org.flywaydb', name:'flyway-core'
+  implementation group: 'org.flywaydb', name:'flyway-database-postgresql'
 
   implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: '6.1.9'
 
@@ -173,15 +178,30 @@ dependencies {
     exclude group: 'junit', module: 'junit'
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
   }
+  testImplementation group: 'com.h2database', name:'h2', version: '2.3.232'
 }
 
 mainClassName = 'uk.gov.hmcts.reform.dev.Application'
+
+springBoot {
+  mainClass = mainClassName
+}
 
 bootJar {
   archiveFileName = "test-backend.jar"
 
   manifest {
-    attributes('Implementation-Version': project.version.toString())
+    attributes 'Implementation-Version': project.version.toString(),
+      'Start-Class': mainClassName
+  }
+}
+
+jar {
+  archiveFileName = "test-backend-jar.jar"
+
+  manifest {
+    attributes 'Implementation-Version': project.version.toString(),
+      'Main-Class': mainClassName
   }
 }
 

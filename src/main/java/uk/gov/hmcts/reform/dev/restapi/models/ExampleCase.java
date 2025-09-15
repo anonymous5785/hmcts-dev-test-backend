@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.dev.models;
+package uk.gov.hmcts.reform.dev.restapi.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
